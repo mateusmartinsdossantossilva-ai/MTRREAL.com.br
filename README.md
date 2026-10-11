@@ -17,10 +17,7 @@ MTRREAL/
     │   └── products.js            ← ÚNICO arquivo para editar o catálogo
     ├── camisetas/
     ├── camisas/
-    ├── conjuntos/
     ├── moletons/
-    ├── shorts/
-    ├── calcas/
     └── icons/
 ```
 
@@ -47,8 +44,6 @@ Cada categoria tem sua própria pasta dentro de `assets/`:
 ```
 assets/camisetas/
 assets/moletons/
-assets/shorts/
-assets/calcas/
 ```
 
 Para cada peça, salve 3 fotos com esse padrão de nome:
@@ -90,7 +85,7 @@ colchetes `[ ... ]`, mudando os valores:
 {
   id: "tee-003",                      // único, sem espaços
   name: "MTRREAL TEE 003",
-  category: "camisetas",              // camisetas | moletons | shorts | calcas
+  category: "camisetas",              // camisetas | moletons
   price: 199.90,
   images: {
     front:  "assets/camisetas/tee-003-front.jpg",
@@ -174,7 +169,7 @@ apenas a primeira peça marcada como `true`).
   (gira com o mouse no desktop e com o toque/swipe no celular, desacelerando
   sozinho ao soltar).
 - Seção NEW DROP com a peça em destaque.
-- 4 categorias (Camisetas, Moletons, Shorts, Calças) em grid editorial,
+- 2 categorias (Camisetas, Moletons) em grid editorial,
   com tamanhos variados de imagem — não é um grid de cards genérico.
 - Página/overlay de produto com galeria (setas no desktop, swipe no
   celular), seleção de tamanho, descrição, tecido e construção.
@@ -199,11 +194,11 @@ apenas a primeira peça marcada como `true`).
 
 ## 10. Coleções e prateleiras (novidades do site)
 
-- **Prateleiras** na home (CAMISAS, SHORTS, MOLETONS, CALÇAS): use
-  `shelf: "prateleira-moletons"` (ou `-camisas`, `-shorts`, `-calcas`) na peça.
+- **Prateleiras** na home (CAMISAS, MOLETONS): use
+  `shelf: "prateleira-moletons"` (ou `-camisas`) na peça.
   Cada peça substitui um card "Produto em breve" (sempre 4 cards no mínimo).
 - **COLEÇÕES** (menu no topo): use `collection: "camisas-novidades"` na peça.
-  Abas: conjuntos | camisas | moletons | shorts | calcas.
+  Abas: camisas | moletons.
   Sub-abas: novidades | mais-vendidos | promocoes.
 - O número de WhatsApp é limpo automaticamente (aceita espaços e traços), mas o
   ideal é deixar só dígitos.

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTRREAL — Real Streetwear</title>
-<meta name="description" content="MTRREAL. Streetwear premium, urbano e sem excesso. Camisetas, moletons, shorts e calças.">
+<meta name="description" content="MTRREAL. Streetwear premium, urbano e sem excesso. Camisetas e moletons.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,9 +31,6 @@
     <button class="nav__link" data-link data-target="new-drop">NEW DROP</button>
     <button class="nav__link" data-link data-target="camisetas">CAMISETAS</button>
     <button class="nav__link" data-link data-target="moletons">MOLETONS</button>
-    <button class="nav__link" data-link data-target="shorts">SHORTS</button>
-    <button class="nav__link" data-link data-target="calcas">CALÇAS</button>
-    <button class="nav__link" data-link data-target="conjuntos">CONJUNTOS</button>
 
     <div class="nav__dropdown" id="colecoesDropdown">
       <button class="nav__link nav__link--toggle" id="colecoesBtn" aria-expanded="false" aria-haspopup="true" aria-controls="colecoesMenu">
@@ -55,9 +52,6 @@
   <button class="mobile-menu__link" data-link data-target="new-drop">NEW DROP</button>
   <button class="mobile-menu__link" data-link data-target="camisetas">CAMISETAS</button>
   <button class="mobile-menu__link" data-link data-target="moletons">MOLETONS</button>
-  <button class="mobile-menu__link" data-link data-target="shorts">SHORTS</button>
-  <button class="mobile-menu__link" data-link data-target="calcas">CALÇAS</button>
-  <button class="mobile-menu__link" data-link data-target="conjuntos">CONJUNTOS</button>
   <button class="mobile-menu__link mobile-menu__link--toggle" id="mobileColecoesBtn" aria-expanded="false" aria-controls="mobileColecoes">COLEÇÕES</button>
   <div class="colecoes-menu colecoes-menu--mobile" id="mobileColecoes" hidden></div>
   <button class="mobile-menu__link mobile-menu__link--cart" id="mobileCartBtn">CARRINHO <span id="mobileCartCount"></span></button>
@@ -108,30 +102,6 @@
     <div class="editorial-grid" id="grid-moletons"><!-- preenchido via JS --></div>
   </section>
 
-  <section class="category" id="shorts" aria-labelledby="shortsTitle">
-    <div class="section-head">
-      <h2 id="shortsTitle">SHORTS</h2>
-      <p class="section-head__sub">Funcional. Sem excesso.</p>
-    </div>
-    <div class="editorial-grid" id="grid-shorts"><!-- preenchido via JS --></div>
-  </section>
-
-  <section class="category" id="calcas" aria-labelledby="calcasTitle">
-    <div class="section-head">
-      <h2 id="calcasTitle">CALÇAS</h2>
-      <p class="section-head__sub">Corte reto, caimento estruturado.</p>
-    </div>
-    <div class="editorial-grid" id="grid-calcas"><!-- preenchido via JS --></div>
-  </section>
-
-  <section class="category" id="conjuntos" aria-labelledby="conjuntosTitle">
-    <div class="section-head">
-      <h2 id="conjuntosTitle">CONJUNTOS</h2>
-      <p class="section-head__sub">Peças coordenadas, identidade MTRREAL.</p>
-    </div>
-    <div class="editorial-grid" id="grid-conjuntos"><!-- preenchido via JS --></div>
-  </section>
-
   <!-- ================= PRATELEIRAS ================= -->
   <section class="shelf" id="prateleira-camisas" aria-labelledby="prateleira-camisas-title">
     <div class="section-head">
@@ -148,40 +118,10 @@
     </div>
   </section>
 
-  <section class="shelf" id="prateleira-shorts" aria-labelledby="prateleira-shorts-title">
-    <div class="section-head">
-      <h2 id="prateleira-shorts-title">SHORTS</h2>
-      <a class="shelf__all" href="#shorts-novidades" data-colecao="shorts-novidades">
-        <span>VER TUDO</span>
-        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-      </a>
-    </div>
-    <div class="shelf__viewport">
-      <button class="shelf__arrow shelf__arrow--prev" aria-label="Anterior"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 2L4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
-      <div class="shelf__track"><!-- preenchido via JS --></div>
-      <button class="shelf__arrow shelf__arrow--next" aria-label="Próximo"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 2l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
-    </div>
-  </section>
-
   <section class="shelf" id="prateleira-moletons" aria-labelledby="prateleira-moletons-title">
     <div class="section-head">
       <h2 id="prateleira-moletons-title">MOLETONS</h2>
       <a class="shelf__all" href="#moletons-novidades" data-colecao="moletons-novidades">
-        <span>VER TUDO</span>
-        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-      </a>
-    </div>
-    <div class="shelf__viewport">
-      <button class="shelf__arrow shelf__arrow--prev" aria-label="Anterior"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 2L4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
-      <div class="shelf__track"><!-- preenchido via JS --></div>
-      <button class="shelf__arrow shelf__arrow--next" aria-label="Próximo"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 2l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
-    </div>
-  </section>
-
-  <section class="shelf" id="prateleira-calcas" aria-labelledby="prateleira-calcas-title">
-    <div class="section-head">
-      <h2 id="prateleira-calcas-title">CALÇAS</h2>
-      <a class="shelf__all" href="#calcas-novidades" data-colecao="calcas-novidades">
         <span>VER TUDO</span>
         <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>

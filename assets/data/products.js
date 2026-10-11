@@ -13,7 +13,7 @@
    CAMPOS:
    id          -> identificador único (sem espaços)
    name        -> nome da peça, ex: "MTRREAL TEE 001"
-   category    -> "camisetas" | "moletons" | "shorts" | "calcas"
+   category    -> "camisetas" | "moletons" | "camisas"
    price       -> número, em reais, sem "R$" (ex: 129.90)
    images      -> caminhos das fotos dentro de assets/<categoria>/
                   front = frente | back = costas | detail = detalhe
@@ -25,13 +25,12 @@
    newDrop     -> true = aparece na seção NEW DROP da home
    collection  -> (opcional) coloca a peça SÓ numa sub-aba de COLEÇÕES,
                   no formato "<aba>-<sub-aba>":
-                  abas:     conjuntos | camisas | moletons | shorts | calcas
+                  abas:     camisas | moletons
                   sub-abas: novidades | mais-vendidos | promocoes
                   ex: collection: "camisas-novidades"
                   (peças com `collection` não aparecem nas categorias antigas)
    shelf       -> (opcional) coloca a peça SÓ numa prateleira da página inicial:
-                  prateleira-camisas | prateleira-shorts |
-                  prateleira-moletons | prateleira-calcas
+                  prateleira-camisas | prateleira-moletons
                   ex: shelf: "prateleira-moletons"
                   (cada peça substitui um card "Produto em breve")
    ========================================================================= */
@@ -106,78 +105,6 @@ const products = [
       "Moletom careca de gola careca reforçada, corte reto e caimento estruturado.",
     fabric: "Moletom flanelado 380g/m², 100% algodão",
     construction: "Gola dupla face, costura industrial reforçada",
-    newDrop: false
-  },
-  {
-    id: "short-001",
-    name: "MTRREAL SHORT 001",
-    category: "shorts",
-    price: 100.00,
-    images: {
-      front: "assets/shorts/short-001-front.jpg",
-      back: "assets/shorts/short-001-back.jpg",
-      detail: "assets/shorts/short-001-detail.jpg"
-    },
-    sizes: ["P", "M", "G", "GG"],
-    soldOut: [],
-    description:
-      "Short de sarja com elástico interno e cordão ajustável. Bolsos funcionais.",
-    fabric: "Sarja pesada 100% algodão, 260g/m²",
-    construction: "Bolsos duplos frente e fundo, cós com elástico + cordão",
-    newDrop: false
-  },
-  {
-    id: "calca-001",
-    name: "MTRREAL CARGO 001",
-    category: "calcas",
-    price: 159.99,
-    images: {
-      front: "assets/calcas/cargo-001-front.jpg",
-      back: "assets/calcas/cargo-001-back.jpg",
-      detail: "assets/calcas/cargo-001-detail.jpg"
-    },
-    sizes: ["P", "M", "G", "GG"],
-    soldOut: [],
-    description:
-      "Calça cargo de corte reto com bolsos laterais utilitários e ajuste na barra.",
-    fabric: "Sarja técnica 100% algodão, 270g/m²",
-    construction: "6 bolsos funcionais, barra com ajuste por botão",
-    newDrop: false
-  },
-  {
-    id: "calca-002",
-    name: "MTRREAL TRACK 002",
-    category: "calcas",
-    price: 259.90,
-    images: {
-      front: "assets/calcas/track-002-front.jpg",
-      back: "assets/calcas/track-002-back.jpg",
-      detail: "assets/calcas/track-002-detail.jpg"
-    },
-    sizes: ["P", "M", "G"],
-    soldOut: [],
-    description:
-      "Calça de moletom com corte reto e punho na barra. Conforto com estrutura.",
-    fabric: "Moletom 320g/m², 90% algodão / 10% poliéster",
-    construction: "Cós com elástico interno + cordão, punho canelado",
-    newDrop: false
-  },
-    {
-    id: "conjunto-001",
-    name: "FEAR OF GOD",
-    category: "conjuntos",
-    price: 250.00,
-    images: {
-      front: "assets/conjuntos/conjunto-001-front.jpg",
-      back: "assets/conjuntos/conjunto-001-back.jpg",
-      detail: "assets/conjuntos/conjunto-001-detail.jpg"
-    },
-    sizes: ["M", "G", "GG"],
-    soldOut: [],
-    description:
-      "Conjunto FEAR OF GOD com camiseta e short coordenados.",
-    fabric: "Algodão",
-    construction: "Acabamento estruturado e costura reforçada",
     newDrop: false
   },
   {

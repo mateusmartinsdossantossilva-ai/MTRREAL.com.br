@@ -227,7 +227,7 @@
   }
 
   function labelCategory(cat){
-    const map = { camisetas:"CAMISETAS", moletons:"MOLETONS", shorts:"SHORTS", calcas:"CALÇAS", conjuntos: "CONJUNTOS", camisas:"CAMISAS" };
+    const map = { camisetas:"CAMISETAS", moletons:"MOLETONS", camisas:"CAMISAS" };
     return map[cat] || cat.toUpperCase();
   }
 
@@ -271,7 +271,7 @@
     });
   }
 
-  ["camisetas","moletons","shorts","calcas","conjuntos"].forEach(renderCategoryGrid);
+  ["camisetas","moletons"].forEach(renderCategoryGrid);
   renderNewDrop();
   initColecoes();
   initShelves();
@@ -279,8 +279,7 @@
 
   /* ---------------------------------------------------------------------
      PRATELEIRAS — linhas horizontais na página inicial
-     Nomes fixos: prateleira-camisas | prateleira-shorts |
-                  prateleira-moletons | prateleira-calcas
+     Nomes fixos: prateleira-camisas | prateleira-moletons
      Para colocar uma peça, use `shelf: "prateleira-moletons"` no products.js.
      Cada peça real substitui um card de exemplo (sempre no mínimo 4 cards).
   --------------------------------------------------------------------- */
@@ -368,11 +367,8 @@
   --------------------------------------------------------------------- */
   function initColecoes(){
     const COLLECTIONS = [
-      { id:"conjuntos", label:"CONJUNTOS" },
       { id:"camisas",   label:"CAMISAS" },
       { id:"moletons",  label:"MOLETONS" },
-      { id:"shorts",    label:"SHORTS" },
-      { id:"calcas",    label:"CALÇAS" },
     ];
     const SUBTABS = [
       { id:"novidades",     label:"NOVIDADES" },
