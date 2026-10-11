@@ -19,43 +19,15 @@
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
-  <button class="nav__burger" id="burgerBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
-    <span></span><span></span>
-  </button>
-
   <a href="#hero" class="nav__brand" data-link data-target="hero" aria-label="MTRREAL — início">
     <img src="assets/logo/mtrreal-wordmark.png" alt="MTRREAL" class="nav__wordmark">
   </a>
-
-  <nav class="nav__links" aria-label="Navegação principal">
-    <button class="nav__link" data-link data-target="new-drop">NEW DROP</button>
-    <button class="nav__link" data-link data-target="camisetas">CAMISETAS</button>
-    <button class="nav__link" data-link data-target="moletons">MOLETONS</button>
-
-    <div class="nav__dropdown" id="colecoesDropdown">
-      <button class="nav__link nav__link--toggle" id="colecoesBtn" aria-expanded="false" aria-haspopup="true" aria-controls="colecoesMenu">
-        COLEÇÕES
-        <svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path d="M2 5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-      </button>
-      <div class="nav__dropdown-panel colecoes-menu" id="colecoesMenu" hidden></div>
-    </div>
-  </nav>
 
   <button class="nav__cart" id="cartBtn" aria-label="Abrir carrinho" aria-haspopup="true" aria-controls="cartDrawer">
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M9 7V6a3 3 0 0 1 6 0v1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
     <span class="nav__cart-count" id="cartCount" hidden>0</span>
   </button>
 </header>
-
-<!-- ================= MOBILE MENU ================= -->
-<div class="mobile-menu" id="mobileMenu" hidden>
-  <button class="mobile-menu__link" data-link data-target="new-drop">NEW DROP</button>
-  <button class="mobile-menu__link" data-link data-target="camisetas">CAMISETAS</button>
-  <button class="mobile-menu__link" data-link data-target="moletons">MOLETONS</button>
-  <button class="mobile-menu__link mobile-menu__link--toggle" id="mobileColecoesBtn" aria-expanded="false" aria-controls="mobileColecoes">COLEÇÕES</button>
-  <div class="colecoes-menu colecoes-menu--mobile" id="mobileColecoes" hidden></div>
-  <button class="mobile-menu__link mobile-menu__link--cart" id="mobileCartBtn">CARRINHO <span id="mobileCartCount"></span></button>
-</div>
 
 <main id="main">
 

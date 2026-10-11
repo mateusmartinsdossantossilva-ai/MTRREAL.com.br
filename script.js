@@ -54,23 +54,30 @@
   const burgerBtn = $("#burgerBtn");
   const mobileMenu = $("#mobileMenu");
 
+  /* o menu superior foi removido do site; estas funções ficam seguras
+     caso os elementos não existam */
   function openMobileMenu(){
+    if(!mobileMenu || !burgerBtn) return;
     mobileMenu.hidden = false;
     requestAnimationFrame(()=> mobileMenu.classList.add("is-open"));
     burgerBtn.setAttribute("aria-expanded","true");
     document.body.style.overflow = "hidden";
   }
   function closeMobileMenu(){
+    if(!mobileMenu || !burgerBtn) return;
     mobileMenu.classList.remove("is-open");
     burgerBtn.setAttribute("aria-expanded","false");
     document.body.style.overflow = "";
     setTimeout(()=>{ if(!mobileMenu.classList.contains("is-open")) mobileMenu.hidden = true; }, 260);
   }
-  burgerBtn.addEventListener("click", ()=>{
-    mobileMenu.classList.contains("is-open") ? closeMobileMenu() : openMobileMenu();
-  });
+  if(burgerBtn && mobileMenu){
+    burgerBtn.addEventListener("click", ()=>{
+      mobileMenu.classList.contains("is-open") ? closeMobileMenu() : openMobileMenu();
+    });
+  }
 
-  $("#mobileCartBtn").addEventListener("click", ()=>{ closeMobileMenu(); openCart(); });
+  const mobileCartBtn = $("#mobileCartBtn");
+  if(mobileCartBtn) mobileCartBtn.addEventListener("click", ()=>{ closeMobileMenu(); openCart(); });
 
   /* ---------------------------------------------------------------------
      LOGO INTERATIVA — mouse (desktop) e toque (mobile)
@@ -496,7 +503,7 @@
       if(!btn) return;
       if(btn.tagName === "A") e.preventDefault();
       setDropdown(false);
-      if(!mobileMenu.hidden) closeMobileMenu();
+      if(mobileMenu && !mobileMenu.hidden) closeMobileMenu();
       showColecao(btn.dataset.colecao, true);
     });
 
@@ -727,7 +734,7 @@
     const totalQty = cart.reduce((s,i)=> s + i.qty, 0);
     cartCount.hidden = totalQty === 0;
     cartCount.textContent = totalQty;
-    mobileCartCount.textContent = totalQty ? `(${totalQty})` : "";
+    if(mobileCartCount) mobileCartCount.textContent = totalQty ? `(${totalQty})` : "";
 
     cartItemsEl.innerHTML = "";
     if(cart.length === 0){
