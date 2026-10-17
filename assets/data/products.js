@@ -91,20 +91,20 @@ const products = [
     newDrop: true
   },
   {
-    id: "moleton-002",
-    name: "MTRREAL CREWNECK 002",
+    id: "hoodie-signature",
+    name: "MTRREAL SIGNATURE",
     category: "moletons",
-    price: 200.90,
+    price: 300.00,
     images: {
-      back: "assets/moletons/crew-002-back.jpg",
-      detail: "assets/moletons/crew-002-detail.jpg"
+      front: "assets/moletons/hoodie-signature-front.jpg",
+      back: "assets/moletons/hoodie-signature-back.jpg"
     },
     sizes: ["M", "G", "GG"],
     soldOut: [],
     description:
-      "Moletom careca de gola careca reforçada, corte reto e caimento estruturado.",
-    fabric: "Moletom flanelado 380g/m², 100% algodão",
-    construction: "Gola dupla face, costura industrial reforçada",
+      "Moletom preto com capuz e bolso canguru. Escudo MTR grande em branco no peito.",
+    fabric: "",
+    construction: "",
     newDrop: false
   },
   {
