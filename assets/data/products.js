@@ -111,7 +111,7 @@ const products = [
     id: "hoodie-one-of-one",
     name: "MTRREAL HOODIE ONE OF ONE",
     category: "moletons",
-    price: 300.00,
+    price: 270.00,
     images: {
       front: "assets/moletons/hoodie-one-of-one-front.jpg"
     },
@@ -129,7 +129,7 @@ const products = [
     id: "hoodie-core",
     name: "MTRREAL HOODIE CORE",
     category: "moletons",
-    price: 300.00,
+    price: 270.00,
     images: {
       front: "assets/moletons/hoodie-core-front.jpg"
     },
@@ -147,7 +147,7 @@ const products = [
     id: "hoodie-oval",
     name: "MTRREAL HOODIE OVAL",
     category: "moletons",
-    price: 300.00,
+    price: 270.00,
     images: {
       front: "assets/moletons/hoodie-oval-front.jpg"
     },
@@ -165,7 +165,7 @@ const products = [
     id: "hoodie-triple-oval",
     name: "MTRREAL HOODIE TRIPLE OVAL",
     category: "moletons",
-    price: 300.00,
+    price: 270.00,
     images: {
       front: "assets/moletons/hoodie-triple-oval-front.jpg"
     },
