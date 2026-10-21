@@ -232,6 +232,28 @@ p{ margin:0; }
 .halloween__cta:hover,.halloween__cta:focus-visible{ background:var(--c-halloween); border-color:var(--c-halloween); color:var(--c-black); }
 .halloween :focus-visible{ outline-color:var(--c-halloween); }
 
+/* --- variações: banner duplo (2 painéis) e versão clara --- */
+.halloween--duo .halloween__art{ grid-template-columns:1fr 1fr; }
+.halloween__panel--epicenter img{ object-position:68% center; opacity:.95; }
+.halloween__panel--web img{ opacity:.9; }
+.halloween__panel--web::after{ content:''; position:absolute; inset:0; background:var(--c-halloween); mix-blend-mode:multiply; }
+
+.halloween--light{ background:var(--c-white); color:var(--c-black); }
+.halloween--light .halloween__art{ grid-template-columns:.8fr 1.4fr; }
+.halloween--light .halloween__panel{ background:var(--c-white); }
+.halloween--light .halloween__panel img{ filter:brightness(1.1) contrast(1.05); mix-blend-mode:multiply; }
+.halloween--light .halloween__panel--wave img{
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 22%, #000 80%, transparent 100%);
+          mask-image:linear-gradient(to right, transparent 0%, #000 22%, #000 80%, transparent 100%);
+}
+.halloween--light .halloween__art::after{
+  background:radial-gradient(ellipse at center, rgba(255,255,255,.88) 0%, rgba(255,255,255,.3) 62%, rgba(255,255,255,0) 100%);
+}
+.halloween--light .halloween__title{ text-shadow:0 2px 24px rgba(255,255,255,.7); }
+.halloween--light .halloween__eyebrow{ text-shadow:0 0 10px var(--c-white), 0 0 22px var(--c-white); }
+.halloween--light .halloween__cta{ border-color:var(--c-black); }
+.halloween--light .halloween__cta:hover,.halloween--light .halloween__cta:focus-visible{ background:var(--c-halloween); border-color:var(--c-halloween); color:var(--c-black); }
+
 @media (max-width:640px){
   .halloween{ min-height:clamp(380px,110vw,520px); }
   .halloween__art{ grid-template-columns:1fr 1.2fr 1fr; }
@@ -355,6 +377,17 @@ p{ margin:0; }
 .footer__wordmark{ height:18px; filter:invert(1); opacity:.85; }
 .footer__line{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.1em; color:var(--c-grey); }
 .footer__copy{ font-family:var(--font-mono); font-size:10.5px; color:var(--c-grey); opacity:.7; }
+
+/* rodapé temático de Halloween */
+.footer--halloween{ position:relative; isolation:isolate; overflow:hidden; background:var(--c-black); border-top:0; }
+.footer--halloween::before{
+  content:''; position:absolute; inset:0; z-index:-1;
+  background:url("assets/banner/halloween-sketch.jpg") center/cover no-repeat;
+  filter:invert(1); opacity:.16;
+}
+.footer--halloween .footer__wordmark{ filter:none; opacity:.95; }
+.footer--halloween .footer__line{ color:#ff6a00; }
+.footer--halloween .footer__copy{ color:var(--c-white); opacity:.55; }
 
 /* =============================== BUTTONS ================================ */
 .btn{
