@@ -52,7 +52,7 @@ const products = [
       "Camiseta de corte reto com caimento estruturado. Peça base da MTRREAL, pensada para uso diário sem perder presença.",
     fabric: "100% algodão penteado 30.1, 220g/m²",
     construction: "Costura reforçada dupla agulha, gola canelada anti-deformação",
-    newDrop: true
+    newDrop: false
   },
   {
     id: "tee-002",
