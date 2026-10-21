@@ -88,7 +88,7 @@ const products = [
       "Moletom com capuz forrado e bolso canguru. Peça central da coleção, feita para durar temporadas.",
     fabric: "Moletom flanelado 400g/m², 80% algodão / 20% poliéster",
     construction: "Cordão com ponteira emborrachada, punho e barra em ribana reforçada",
-    newDrop: true
+    newDrop: false
   },
   {
     id: "hoodie-signature",
@@ -175,7 +175,7 @@ const products = [
       "Moletom preto com capuz e três logos ovais MTRREAL empilhados no peito.",
     fabric: "",
     construction: "",
-    newDrop: false,
+    newDrop: true,
     shelf: "prateleira-moletons",
     collection: "moletons-novidades"
   },
