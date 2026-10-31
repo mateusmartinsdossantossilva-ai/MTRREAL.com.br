@@ -202,3 +202,30 @@ apenas a primeira peça marcada como `true`).
   Sub-abas: novidades | mais-vendidos | promocoes.
 - O número de WhatsApp é limpo automaticamente (aceita espaços e traços), mas o
   ideal é deixar só dígitos.
+
+## 11. Cupom de desconto e frete grátis
+
+No carrinho, logo acima do subtotal, o cliente vê um aviso da oferta e um campo
+**CUPOM DE DESCONTO**. O desconto e o frete grátis entram na mensagem enviada
+pelo WhatsApp.
+
+Tudo é configurado em `assets/data/offers.js` (não precisa mexer no resto):
+
+```js
+const OFFERS = {
+  coupons: [
+    { code: "MTRREAL15", type: "percent", value: 15, minSubtotal: 200, promo: true }
+  ],
+  freeShipping: { minSubtotal: 300 }
+};
+```
+
+- `type`: `"percent"` (porcentagem) ou `"fixed"` (valor fixo em R$).
+- `minSubtotal`: compra mínima (soma das peças, antes do desconto).
+- `promo: true`: o carrinho mostra o progresso ("Faltam R$ X...") e, ao atingir o
+  mínimo, libera o código com o botão **USAR CUPOM**. Com `false`, o cupom fica
+  "escondido": só funciona para quem souber o código.
+- `freeShipping.minSubtotal`: compra mínima para frete grátis (`null` desliga).
+
+Atenção: o site é estático, então os códigos ficam visíveis no código-fonte.
+Serve para promoções abertas; não use para cupons que precisem ficar secretos.

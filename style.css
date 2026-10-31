@@ -494,6 +494,44 @@ p{ margin:0; }
 .cart-drawer__footer{ padding:20px var(--edge) 28px; border-top:1px solid var(--c-line); }
 .cart-drawer__subtotal{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.06em; margin-bottom:14px; }
 
+.cart-drawer__subtotal[hidden]{ display:none; }
+.cart-drawer__subtotal--discount{ color:var(--c-red); }
+.cart-drawer__subtotal--shipping span:last-child{ color:var(--c-red); }
+.cart-drawer__subtotal--total{ font-size:15px; padding-top:12px; border-top:1px solid var(--c-line); }
+
+/* oferta (aviso de progresso) e cupom de desconto */
+.cart-offer{
+  margin-bottom:14px; padding:12px 14px; background:var(--c-bone);
+  font-family:var(--font-mono); font-size:11.5px; line-height:1.55; letter-spacing:.03em;
+}
+.cart-offer p + p{ margin-top:4px; }
+.cart-offer strong{ font-weight:600; }
+.cart-offer__ok{ color:var(--c-red); }
+.cart-offer__use{
+  display:inline-block; margin:8px 0 6px; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em;
+  border-bottom:1px solid var(--c-black); padding-bottom:2px;
+}
+.cart-offer__use:hover{ color:var(--c-red); border-color:var(--c-red); }
+
+.cart-coupon{ margin-bottom:16px; }
+.cart-coupon__label{ display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; color:var(--c-grey); margin-bottom:8px; }
+.cart-coupon__row{ display:flex; }
+.cart-coupon__input{
+  flex:1; min-width:0; height:42px; padding:0 12px; border:1px solid var(--c-line); border-right:0; border-radius:0;
+  background:var(--c-white); color:var(--c-black); font-family:var(--font-mono); font-size:16px; letter-spacing:.08em; text-transform:uppercase;
+}
+.cart-coupon__input::placeholder{ text-transform:none; letter-spacing:.02em; color:var(--c-grey); font-size:13px; }
+.cart-coupon__input:focus{ outline:none; border-color:var(--c-black); }
+.cart-coupon__input:read-only{ background:var(--c-bone); }
+.cart-coupon__btn{
+  height:42px; padding:0 18px; background:var(--c-black); color:var(--c-white); border:1px solid var(--c-black);
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; transition:background var(--dur-s) var(--ease), border-color var(--dur-s) var(--ease);
+}
+.cart-coupon__btn:hover{ background:var(--c-red); border-color:var(--c-red); }
+.cart-coupon__msg{ min-height:1.2em; margin-top:8px; font-family:var(--font-mono); font-size:11.5px; line-height:1.5; color:var(--c-grey); }
+.cart-coupon__msg.is-ok{ color:var(--c-red); }
+.cart-coupon__msg.is-error{ color:var(--c-red); }
+
 /* =============================== TOAST ================================ */
 .toast{
   position:fixed; left:50%; bottom:28px; transform:translate(-50%,20px); z-index:90;

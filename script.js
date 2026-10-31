@@ -737,6 +737,144 @@
   const cartSubtotalEl = $("#cartSubtotal");
   const cartCheckoutBtn = $("#cartCheckout");
 
+  /* ---------------------------------------------------------------------
+     OFERTAS E CUPOM DE DESCONTO (configuração em assets/data/offers.js)
+  --------------------------------------------------------------------- */
+  const OFFERS_CFG = (typeof OFFERS !== "undefined" && OFFERS) ? OFFERS : { coupons:[], freeShipping:null };
+  const COUPONS = Array.isArray(OFFERS_CFG.coupons) ? OFFERS_CFG.coupons : [];
+  const FREE_SHIPPING_MIN = (OFFERS_CFG.freeShipping && typeof OFFERS_CFG.freeShipping.minSubtotal === "number")
+    ? OFFERS_CFG.freeShipping.minSubtotal : null;
+  const COUPON_KEY = "mtrreal_coupon_v1";
+
+  const offerEl = $("#cartOffer");
+  const couponForm = $("#cartCouponForm");
+  const couponInput = $("#cartCouponInput");
+  const couponBtn = $("#cartCouponBtn");
+  const couponMsg = $("#cartCouponMsg");
+  const discountRow = $("#cartDiscountRow");
+  const discountLabelEl = $("#cartDiscountLabel");
+  const discountEl = $("#cartDiscount");
+  const shippingRow = $("#cartShippingRow");
+  const totalRow = $("#cartTotalRow");
+  const totalEl = $("#cartTotal");
+
+  let appliedCode = null;
+  try{ appliedCode = localStorage.getItem(COUPON_KEY) || null; } catch(e){ appliedCode = null; }
+  let flashMsg = null; // mensagem pontual (ex.: "Cupom inválido") mostrada uma vez
+
+  function saveCoupon(){
+    try{
+      if(appliedCode) localStorage.setItem(COUPON_KEY, appliedCode);
+      else localStorage.removeItem(COUPON_KEY);
+    } catch(e){ /* ignora se indisponível */ }
+  }
+  const round2 = (n) => Math.round(n * 100) / 100;
+  const findCoupon = (code) => {
+    const c = String(code || "").trim().toUpperCase();
+    return c ? (COUPONS.find(x => String(x.code).toUpperCase() === c) || null) : null;
+  };
+  const couponLabel = (c) => c.type === "fixed" ? `${money(c.value)} OFF` : `${c.value}% OFF`;
+
+  function calcTotals(){
+    const subtotal = round2(cart.reduce((s,i)=> s + i.price * i.qty, 0));
+    const coupon = findCoupon(appliedCode);
+    const couponActive = !!coupon && subtotal > 0 && subtotal >= (coupon.minSubtotal || 0);
+    let discount = 0;
+    if(couponActive){
+      discount = coupon.type === "fixed" ? Math.min(coupon.value, subtotal) : round2(subtotal * coupon.value / 100);
+    }
+    const freeShipping = FREE_SHIPPING_MIN !== null && subtotal > 0 && subtotal >= FREE_SHIPPING_MIN;
+    return { subtotal, coupon, couponActive, discount, freeShipping, total: round2(subtotal - discount) };
+  }
+
+  function tryApplyCoupon(code){
+    const typed = String(code || "").trim();
+    if(!typed){ flashMsg = { text:"Digite o código do cupom.", kind:"error" }; return; }
+    const coupon = findCoupon(typed);
+    if(!coupon){ flashMsg = { text:"Cupom inválido.", kind:"error" }; return; }
+    const min = coupon.minSubtotal || 0;
+    const { subtotal } = calcTotals();
+    if(subtotal < min){
+      flashMsg = { text:`Esse cupom vale para compras a partir de ${money(min)}. Faltam ${money(min - subtotal)}.`, kind:"error" };
+      return;
+    }
+    appliedCode = coupon.code;
+    saveCoupon();
+  }
+
+  couponForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    if(findCoupon(appliedCode)){            // botão "REMOVER"
+      appliedCode = null; saveCoupon(); flashMsg = null; couponInput.value = "";
+    } else {
+      if(appliedCode){ appliedCode = null; saveCoupon(); }
+      tryApplyCoupon(couponInput.value);
+    }
+    renderCart();
+  });
+
+  function renderOfferAndCoupon(t){
+    const hasCart = cart.length > 0;
+    couponForm.hidden = !hasCart || COUPONS.length === 0;
+
+    /* aviso da oferta (progresso até o desconto / frete grátis) */
+    offerEl.innerHTML = "";
+    const addLine = (text, ok)=>{
+      const p = document.createElement("p");
+      p.textContent = text;
+      if(ok) p.className = "cart-offer__ok";
+      offerEl.appendChild(p);
+      return p;
+    };
+    if(hasCart){
+      const promo = COUPONS.find(c => c.promo);
+      if(promo){
+        const min = promo.minSubtotal || 0;
+        const promoApplied = t.couponActive && t.coupon.code === promo.code;
+        if(t.subtotal < min){
+          addLine(`Faltam ${money(min - t.subtotal)} para ganhar um cupom de ${couponLabel(promo)}.`);
+        } else if(!promoApplied){
+          addLine(`Você ganhou um cupom de ${couponLabel(promo)}! Código: ${promo.code}`, true);
+          const use = document.createElement("button");
+          use.type = "button"; use.className = "cart-offer__use"; use.textContent = "USAR CUPOM";
+          use.addEventListener("click", ()=>{ couponInput.value = promo.code; tryApplyCoupon(promo.code); renderCart(); });
+          offerEl.appendChild(use);
+        }
+      }
+      if(FREE_SHIPPING_MIN !== null){
+        if(t.subtotal < FREE_SHIPPING_MIN) addLine(`Faltam ${money(FREE_SHIPPING_MIN - t.subtotal)} para ganhar frete grátis.`);
+        else addLine("Frete grátis liberado!", true);
+      }
+    }
+    offerEl.hidden = offerEl.childElementCount === 0;
+
+    /* campo de cupom */
+    const isApplied = !!t.coupon;            // há cupom válido salvo (mesmo se a compra caiu abaixo do mínimo)
+    if(appliedCode && !t.coupon){ appliedCode = null; saveCoupon(); }   // código que não existe mais
+    couponInput.readOnly = isApplied;
+    if(isApplied) couponInput.value = t.coupon.code;
+    couponBtn.textContent = isApplied ? "REMOVER" : "APLICAR";
+
+    let msg = flashMsg; flashMsg = null;
+    if(!msg && isApplied){
+      msg = t.couponActive
+        ? { text:`Cupom ${t.coupon.code} aplicado: ${couponLabel(t.coupon)}.`, kind:"ok" }
+        : { text:`O cupom ${t.coupon.code} vale a partir de ${money(t.coupon.minSubtotal || 0)}. Faltam ${money((t.coupon.minSubtotal || 0) - t.subtotal)}.`, kind:"error" };
+    }
+    couponMsg.textContent = msg ? msg.text : "";
+    couponMsg.className = "cart-coupon__msg" + (msg ? " is-" + msg.kind : "");
+
+    /* linhas de totais */
+    discountRow.hidden = !t.couponActive;
+    if(t.couponActive){
+      discountLabelEl.textContent = `CUPOM ${t.coupon.code}`;
+      discountEl.textContent = "- " + money(t.discount);
+    }
+    shippingRow.hidden = !t.freeShipping;
+    totalRow.hidden = !t.couponActive;
+    if(t.couponActive) totalEl.textContent = money(t.total);
+  }
+
   function renderCart(){
     const totalQty = cart.reduce((s,i)=> s + i.qty, 0);
     cartCount.hidden = totalQty === 0;
@@ -789,9 +927,10 @@
       });
     }
 
-    const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
-    cartSubtotalEl.textContent = money(subtotal);
+    const totals = calcTotals();
+    cartSubtotalEl.textContent = money(totals.subtotal);
     cartCheckoutBtn.disabled = cart.length === 0;
+    renderOfferAndCoupon(totals);
   }
 
   const cartDrawer = $("#cartDrawer");
@@ -816,8 +955,11 @@
   cartCheckoutBtn.addEventListener("click", ()=>{
     if(cart.length === 0) return;
     const lines = cart.map(i => `• ${i.name} — Tam ${i.size} — Qtd ${i.qty} — ${money(i.price*i.qty)}`);
-    const subtotal = cart.reduce((s,i)=> s + i.price * i.qty, 0);
-    const msg = `Olá! Quero fazer o pedido abaixo pela MTRREAL:\n\n${lines.join("\n")}\n\nSubtotal: ${money(subtotal)}`;
+    const t = calcTotals();
+    let msg = `Olá! Quero fazer o pedido abaixo pela MTRREAL:\n\n${lines.join("\n")}\n\nSubtotal: ${money(t.subtotal)}`;
+    if(t.couponActive) msg += `\nCupom ${t.coupon.code} (${couponLabel(t.coupon)}): - ${money(t.discount)}`;
+    if(t.freeShipping) msg += `\nFrete: GRÁTIS`;
+    if(t.couponActive) msg += `\nTotal: ${money(t.total)}`;
     window.open(`${WHATSAPP_BASE_URL}?text=${encodeURIComponent(msg)}`, "_blank");
   });
 

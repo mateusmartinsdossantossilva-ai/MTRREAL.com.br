@@ -232,9 +232,33 @@
   </div>
 
   <div class="cart-drawer__footer">
+    <div class="cart-offer" id="cartOffer" hidden></div>
+
+    <form class="cart-coupon" id="cartCouponForm" autocomplete="off" hidden>
+      <label class="cart-coupon__label" for="cartCouponInput">CUPOM DE DESCONTO</label>
+      <div class="cart-coupon__row">
+        <input class="cart-coupon__input" id="cartCouponInput" type="text" placeholder="Digite seu cupom"
+               autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="30">
+        <button class="cart-coupon__btn" id="cartCouponBtn" type="submit">APLICAR</button>
+      </div>
+      <p class="cart-coupon__msg" id="cartCouponMsg" role="status" aria-live="polite"></p>
+    </form>
+
     <div class="cart-drawer__subtotal">
       <span>SUBTOTAL</span>
       <span id="cartSubtotal">R$ 0,00</span>
+    </div>
+    <div class="cart-drawer__subtotal cart-drawer__subtotal--discount" id="cartDiscountRow" hidden>
+      <span id="cartDiscountLabel">DESCONTO</span>
+      <span id="cartDiscount">- R$ 0,00</span>
+    </div>
+    <div class="cart-drawer__subtotal cart-drawer__subtotal--shipping" id="cartShippingRow" hidden>
+      <span>FRETE</span>
+      <span>GRÁTIS</span>
+    </div>
+    <div class="cart-drawer__subtotal cart-drawer__subtotal--total" id="cartTotalRow" hidden>
+      <span>TOTAL</span>
+      <span id="cartTotal">R$ 0,00</span>
     </div>
     <button class="btn btn--primary cart-drawer__checkout" id="cartCheckout" disabled>FINALIZAR NO WHATSAPP</button>
   </div>
@@ -245,6 +269,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/data/products.js"></script>
+<script src="assets/data/offers.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
