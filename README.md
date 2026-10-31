@@ -173,8 +173,6 @@ apenas a primeira peça marcada como `true`).
   com tamanhos variados de imagem — não é um grid de cards genérico.
 - Página/overlay de produto com galeria (setas no desktop, swipe no
   celular), seleção de tamanho, descrição, tecido e construção.
-- Botão **"QUERO ESTA PEÇA"** que abre o WhatsApp com a mensagem já
-  preenchida com o nome da peça e o tamanho escolhido.
 - Carrinho funcional (adicionar, aumentar/diminuir quantidade, remover,
   subtotal), que continua com os itens mesmo se a pessoa fechar e voltar
   ao site (fica salvo no navegador dela).

@@ -543,7 +543,6 @@
     fabric: $("#pvFabric"),
     construction: $("#pvConstruction"),
     addCart: $("#pvAddCart"),
-    whatsapp: $("#pvWhatsapp"),
   };
 
   let pvState = { product:null, imgKeys:[], imgIndex:0, size:null };
@@ -664,15 +663,6 @@
       }
     });
   })();
-
-  pv.whatsapp.addEventListener("click", ()=>{
-    if(!pvState.size){
-      flashSizeWarning();
-      return;
-    }
-    const msg = `Olá, quero comprar a ${pvState.product.name}, tamanho ${pvState.size}.`;
-    window.open(`${WHATSAPP_BASE_URL}?text=${encodeURIComponent(msg)}`, "_blank");
-  });
 
   pv.addCart.addEventListener("click", ()=>{
     if(!pvState.size){
