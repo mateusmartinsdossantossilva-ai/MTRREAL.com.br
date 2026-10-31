@@ -202,8 +202,15 @@
   --------------------------------------------------------------------- */
   function renderNewDrop(){
     const slot = $("#newDropSlot");
-    const piece = products.find(p => p.newDrop) || products[0];
-    if(!piece){ slot.innerHTML = ""; return; }
+    // mostra TODAS as peças marcadas com newDrop: true (na ordem do products.js)
+    let drop = products.filter(p => p.newDrop);
+    if(!drop.length && products[0]) drop = [products[0]];
+    slot.innerHTML = "";
+    drop.forEach(renderFeaturedPiece);
+  }
+
+  function renderFeaturedPiece(piece){
+    const slot = $("#newDropSlot");
 
     const el = document.createElement("article");
     el.className = "featured-piece reveal";

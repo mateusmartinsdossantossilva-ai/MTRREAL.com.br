@@ -73,6 +73,40 @@ const products = [
     newDrop: false
   },
   {
+    id: "tee-kid-333",
+    name: "MTRREAL TEE KID 333",
+    category: "camisetas",
+    price: 160.00,
+    images: {
+      front: "assets/camisetas/tee-kid-333-front.jpg",
+      back: "assets/camisetas/tee-kid-333-back.jpg"
+    },
+    sizes: ["M", "G", "GG"],
+    soldOut: [],
+    description:
+      "Camiseta preta com estampa de um cabrito com estrela na testa na frente e “ANGEL 333” nas costas. Drop de Halloween.",
+    fabric: "",
+    construction: "",
+    newDrop: true
+  },
+  {
+    id: "tee-duas-faces",
+    name: "MTRREAL TEE DUAS FACES",
+    category: "camisetas",
+    price: 160.00,
+    images: {
+      front: "assets/camisetas/tee-duas-faces-front.jpg",
+      back: "assets/camisetas/tee-duas-faces-back.jpg"
+    },
+    sizes: ["M", "G", "GG"],
+    soldOut: [],
+    description:
+      "Camiseta preta com estampa de duas faces sobrepostas na frente, logo oval MTRREAL no peito e uma estrela em spray nas costas. Drop de Halloween.",
+    fabric: "",
+    construction: "",
+    newDrop: true
+  },
+  {
     id: "moleton-001",
     name: "MTRREAL HOODIE 001",
     category: "moletons",
