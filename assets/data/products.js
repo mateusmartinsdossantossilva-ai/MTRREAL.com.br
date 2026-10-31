@@ -85,7 +85,7 @@ const products = [
     soldOut: [],
     description:
       "Camiseta preta com estampa de um cabrito com estrela na testa na frente e “ANGEL 333” nas costas. Drop de Halloween.",
-    fabric: "",
+    fabric: "Suedine fio 30.1 penteado, 240g/m², tecido premium",
     construction: "",
     newDrop: true
   },
@@ -102,7 +102,7 @@ const products = [
     soldOut: [],
     description:
       "Camiseta preta com estampa de duas faces sobrepostas na frente, logo oval MTRREAL no peito e uma estrela em spray nas costas. Drop de Halloween.",
-    fabric: "",
+    fabric: "Suedine fio 30.1 penteado, 240g/m², tecido premium",
     construction: "",
     newDrop: true
   },
